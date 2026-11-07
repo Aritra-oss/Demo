@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anurupa Cake Shop</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Serif+Display&family=Yellowtail&display=swap">
+<style>
+:root{--cream:#fff6ee;--paper:#fffdf9;--pink:#f7a8b8;--ph:#f7a8b8;--pinkl:#fde4e9;--rasp:#d6456b;--out:#4b2a2a;--muted:#8a6a68;--dot:#fbd3db;--line:#ecd0cf;--star:#f2a900;--bi:#fff6ee;--foot:#4b2a2a;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#251819;--paper:#33232a;--pink:#e88aa0;--ph:#e88aa0;--pinkl:#3d2630;--rasp:#ff8aa8;--out:#f6dcd6;--muted:#c9a5a3;--dot:#2f1f24;--line:#54393f;--bi:#2a1519;--foot:#170e10;color-scheme:dark}}
+:root[data-theme="dark"]{--cream:#251819;--paper:#33232a;--pink:#e88aa0;--ph:#e88aa0;--pinkl:#3d2630;--rasp:#ff8aa8;--out:#f6dcd6;--muted:#c9a5a3;--dot:#2f1f24;--line:#54393f;--bi:#2a1519;--foot:#170e10;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--out);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55}
+.scr{font-family:Yellowtail,cursive;font-weight:400;color:var(--rasp)}
+.awn{display:flex;height:56px;border-top:2px solid var(--out);filter:drop-shadow(0 3px 0 var(--out))}
+.awn i{flex:1;border:2px solid var(--out);border-top:0;border-radius:0 0 999px 999px;margin-left:-2px}
+.awn i:nth-child(odd){background:var(--pink)}.awn i:nth-child(even){background:var(--paper)}
+.hero{background-color:var(--cream);background-image:radial-gradient(var(--dot) 2.5px,transparent 3px);background-size:24px 24px;border-bottom:2px solid var(--out)}
+nav{display:flex;justify-content:flex-end;gap:28px;padding:18px 24px 0;max-width:1150px;margin:0 auto}
+nav a{color:var(--out);text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+nav a:hover{color:var(--rasp)}
+.hero-in{max-width:1150px;margin:0 auto;padding:20px 24px 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+h1{margin:0;font-family:Yellowtail,cursive;font-weight:400;font-size:clamp(4.4rem,15vw,8.5rem);line-height:1;color:var(--rasp);text-shadow:3px 3px 0 var(--out)}
+.rib{display:inline-block;background:var(--out);color:var(--cream);padding:7px 34px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;font-size:.85rem;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
+.hero p{max-width:430px;font-size:1.08rem;margin:22px 0 0}
+.btn{display:inline-block;background:var(--rasp);color:var(--bi);border:2px solid var(--out);border-radius:99px;padding:12px 26px;font:700 .85rem 'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;box-shadow:3px 3px 0 var(--out);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--out)}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--out)}
+.btn.ghost{background:var(--paper);color:var(--out)}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.hero-art{position:relative;aspect-ratio:1;width:100%;max-width:440px;margin:auto}
+.hero-art:before{content:"";position:absolute;inset:5%;border-radius:50%;background:var(--pink);border:2px solid var(--out);box-shadow:6px 6px 0 var(--out)}
+.stk{position:absolute}.stk svg{width:100%;display:block;filter:drop-shadow(3px 4px 0 rgba(75,42,42,.25))}
+.s1{left:12%;top:10%;width:76%;transform:rotate(-4deg)}
+.s2{left:-2%;bottom:6%;width:32%;transform:rotate(-10deg)}
+.s3{right:-2%;bottom:2%;width:32%;transform:rotate(12deg)}
+.badge{position:absolute;top:0;right:0;z-index:3;width:104px;height:104px;border-radius:50%;background:var(--paper);border:2px solid var(--out);box-shadow:3px 3px 0 var(--out);display:grid;place-content:center;text-align:center;transform:rotate(10deg);line-height:1.15}
+.badge b{font:400 1.6rem 'DM Serif Display',serif;color:var(--rasp)}.badge span{font-size:.66rem;font-weight:700}
+.stk svg *,.ph svg *,.m-ph svg *{stroke:var(--out);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+svg [fill="#0002"],svg g>rect{stroke:none}
+section{max-width:1150px;margin:0 auto;padding:80px 20px 10px}
+h2{font:400 clamp(2.6rem,8vw,4rem)/1.1 'DM Serif Display',serif;text-align:center;margin:0}
+h2 span{text-decoration:underline wavy var(--pink);text-decoration-thickness:3px;text-underline-offset:10px}
+.k{display:block;text-align:center;font-family:Yellowtail,cursive;font-size:1.7rem;color:var(--rasp)}
+.sub{text-align:center;color:var(--muted);margin:14px 0 28px}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.chip{border:2px solid var(--out);background:var(--paper);color:var(--out);border-radius:99px;padding:7px 20px;font:700 .8rem 'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.chip.on{background:var(--rasp);color:var(--bi)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 24px}
+.item{position:relative;display:flex;align-items:center;gap:16px;width:100%;text-align:left;color:var(--out);font:inherit;background:var(--paper);border:2px solid var(--out);border-radius:18px;padding:14px;box-shadow:5px 5px 0 var(--out);cursor:pointer;transition:transform .15s,box-shadow .15s;animation:up .5s both;animation-delay:var(--d)}
+.item:nth-child(4n+1),.item:nth-child(4n+4){background:var(--pinkl)}
+.item:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--out)}
+.item:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--out)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.ph{flex:0 0 128px;height:128px;border:2px solid var(--out);border-radius:14px;background:var(--ph);display:grid;place-items:center;overflow:hidden}
+.ph svg{width:82%;height:82%}.ph img{width:100%;height:100%;object-fit:cover}
+.info{flex:1;min-width:0}
+.info h3{font:400 1.35rem/1.15 'DM Serif Display',serif;margin:0 0 2px;padding-right:44px}
+.info p{margin:6px 0 0;font-size:.85rem;color:var(--muted);line-height:1.4}
+.pr{position:absolute;top:-14px;right:-8px;background:var(--rasp);color:var(--bi);border:2px solid var(--out);border-radius:99px;padding:2px 13px;font-weight:700;font-size:.9rem;transform:rotate(5deg);box-shadow:2px 2px 0 var(--out)}
+small{color:var(--muted);font-size:.78rem}
+.stars{background:linear-gradient(90deg,var(--star) calc(var(--r)*20%),var(--line) 0);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:2px;font-size:.95rem}
+.ov{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));background:rgba(45,20,25,.55);animation:fi .2s}
+.ov[hidden]{display:none}
+@keyframes fi{from{opacity:0}}
+.modal{position:relative;background:var(--paper);border:2px solid var(--out);border-radius:22px;box-shadow:8px 8px 0 var(--out);max-width:840px;width:100%;max-height:100%;overflow:auto;display:grid;grid-template-columns:1fr 1fr;animation:pop .3s ease}
+@keyframes pop{from{transform:translateY(16px) scale(.97);opacity:0}}
+.m-ph{background:var(--ph);border-right:2px solid var(--out);display:grid;place-items:center;padding:30px;min-height:300px}
+.m-ph svg{width:100%;max-width:300px}.m-ph img{width:100%;height:100%;object-fit:cover}
+.m-b{padding:30px 28px}
+.m-b h3{font:400 2.2rem/1.1 'DM Serif Display',serif;margin:0}
+.cat{font-family:Yellowtail,cursive;font-size:1.5rem;color:var(--rasp)}
+.x{position:absolute;top:12px;right:12px;width:38px;height:38px;border:2px solid var(--out);background:var(--paper);color:var(--out);font-size:1.4rem;line-height:1;cursor:pointer;z-index:2;border-radius:50%;box-shadow:2px 2px 0 var(--out)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.tags span{background:var(--pinkl);border:1.5px solid var(--out);border-radius:99px;padding:2px 12px;font-size:.78rem;font-weight:500}
+#sizes{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.m-price{font:400 2.2rem 'DM Serif Display',serif;color:var(--rasp);margin:8px 0 12px}
+.rate{margin:0 0 18px;font-size:.88rem}
+.rate button{background:none;border:0;font-size:1.5rem;color:var(--line);cursor:pointer;padding:0 2px}
+.rate button.on{color:var(--star)}
+.band{background:var(--pinkl);border-block:2px solid var(--out);margin-top:90px;padding-bottom:80px}
+.rv{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{position:relative;background:var(--paper);border:2px solid var(--out);border-radius:16px;padding:26px;box-shadow:5px 5px 0 var(--out)}
+.rv .card:nth-child(1){transform:rotate(-1.5deg)}.rv .card:nth-child(2){transform:rotate(1deg)}.rv .card:nth-child(3){transform:rotate(-1deg)}
+.rv .card:before{content:"";position:absolute;top:-13px;left:50%;width:76px;height:24px;background:var(--pink);border:1.5px solid var(--out);transform:translateX(-50%) rotate(-3deg)}
+.rv .card p{margin:8px 0 12px}
+.rv b{font:400 1.5rem Yellowtail,cursive;color:var(--rasp)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.map{height:200px;overflow:hidden;margin-bottom:18px;border:2px solid var(--out);border-radius:12px}
+.map svg{width:100%;height:100%;display:block}
+.li{display:flex;gap:14px;margin:10px 0;font-size:.95rem}
+.li b{flex:0 0 70px;color:var(--rasp)}
+.card h3{margin:0 0 14px;font:400 1.9rem 'DM Serif Display',serif}
+input,textarea{width:100%;padding:12px 14px;border:2px solid var(--out);border-radius:12px;background:var(--cream);color:var(--out);font:inherit;margin-bottom:14px}
+input:focus,textarea:focus{outline:3px solid var(--pink)}
+footer{text-align:center;padding:46px 20px 40px;margin-top:90px;background:var(--foot);color:#ffe9e4;font-size:.85rem}
+footer .scr{display:block;font-size:2.8rem;color:var(--pink)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:760px){
+.hero-in,.cg,.rv,.modal{grid-template-columns:1fr}
+.hero-art{max-width:320px}
+.m-ph{min-height:220px;border-right:0;border-bottom:2px solid var(--out)}.m-ph svg{max-width:200px}
+nav{justify-content:center;gap:18px}
+}
+@media (max-width:640px){
+.grid{gap:26px 12px}
+.item{flex-direction:column;align-items:stretch;gap:10px;padding:10px;text-align:center}
+.ph{flex:none;height:120px}
+.info h3{font-size:1.1rem;padding:0}.info p{display:none}
+}
+</style>
+</head>
+<body>
+<div class="awn" id="awn"></div>
+<header class="hero">
+<nav><a href="#menu">Menu</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
+<div class="hero-in">
+<div>
+<h1>Anurupa</h1>
+<span class="rib">Cake Shop</span>
+<p>Cakes, pastries and sweet little treats, baked fresh every day. Pick from the menu or tell us what you have in mind.</p>
+<div class="cta"><a class="btn" href="#menu">See the menu</a><a class="btn ghost" data-dir target="_blank" rel="noopener">Get directions</a></div>
+</div>
+<div class="hero-art" id="ha"><div class="badge"><b>4.8 ★</b><span>1,200+ reviews</span></div></div>
+</div>
+</header>
+
+<section id="menu">
+<span class="k">fresh from the oven</span>
+<h2><span>The Menu</span></h2>
+<p class="sub">Tap any item to see it up close</p>
+<div class="chips" id="chips"></div>
+<div class="grid" id="grid"></div>
+</section>
+
+<div class="band" id="reviews"><section>
+<span class="k">sweet words</span>
+<h2><span>Happy Customers</span></h2>
+<p class="sub">Rated 4.8 from over 1,200 reviews</p>
+<div class="rv" id="rv"></div>
+</section></div>
+
+<section id="contact">
+<span class="k">come say hello</span>
+<h2><span>Find Us</span></h2>
+<p class="sub">Custom orders, birthdays, weddings. Drop in or message us.</p>
+<div class="cg">
+<div class="card">
+<div class="map"><svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-label="Map preview"><rect width="400" height="200" fill="#fde4e9"/><rect x="250" y="18" width="110" height="68" rx="10" fill="#cfe6c3"/><path d="M0 150Q120 120 200 160T400 120" stroke="#bfdcee" stroke-width="16" fill="none"/><g stroke="#fffdf9" stroke-width="10" fill="none"><path d="M0 60H400M120 0V200M300 0V200M0 180H400"/></g><path d="M200 124c-18-22-20-34-20-42a20 20 0 0 1 40 0c0 8-2 20-20 42z" fill="#d6456b" stroke="#4b2a2a" stroke-width="3"/><circle cx="200" cy="82" r="7" fill="#fff6ee" stroke="#4b2a2a" stroke-width="2"/></svg></div>
+<a class="btn" data-dir target="_blank" rel="noopener">Get directions</a>
+<div class="li" style="margin-top:22px"><b>Address</b><span>Your shop address, City – PIN code</span></div>
+<div class="li"><b>Phone</b><span>+91 98765 43210</span></div>
+<div class="li"><b>Email</b><span>hello@yourshop.com</span></div>
+<div class="li"><b>Hours</b><span>Daily, 9:00 AM – 9:00 PM</span></div>
+</div>
+<div class="card">
+<h3>Send us a message</h3>
+<input id="fn" placeholder="Your name" autocomplete="name">
+<textarea id="fm" rows="7" placeholder="Which cake? Flavour, size, date, message on the cake…"></textarea>
+<a class="btn" id="send" target="_blank" rel="noopener">Send on WhatsApp</a>
+</div>
+</div>
+</section>
+<footer><span class="scr">Anurupa Cake Shop</span>Baked fresh, every day</footer>
+
+<div class="ov" id="ov" hidden>
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+<button class="x" id="x" aria-label="Close">×</button>
+<div class="m-ph" id="mph"></div>
+<div class="m-b">
+<span class="cat" id="mc"></span><h3 id="mt"></h3>
+<div id="mr"></div>
+<p id="md" style="color:var(--muted)"></p>
+<div class="tags" id="mchips"></div>
+<div id="sizes"></div>
+<div class="m-price" id="mp"></div>
+<div class="rate">Your rating: <span id="rs"></span></div>
+<a class="btn" id="ord" target="_blank" rel="noopener">Order on WhatsApp</a>
+</div>
+</div>
+</div>
+
+<script>
+// EDIT THESE: WhatsApp number (country code, no +) and shop address / Google Maps location
+const WA="919876543210",ADDR="Anurupa Cake Shop";
+const S={
+cake:(a,b,c)=>`<svg viewBox="0 0 100 100"><ellipse cx="50" cy="87" rx="42" ry="6" fill="#0002"/><rect x="16" y="50" width="68" height="34" rx="6" fill="${a}"/><rect x="14" y="42" width="72" height="14" rx="7" fill="${b}"/><circle cx="28" cy="60" r="4" fill="${b}"/><circle cx="50" cy="62" r="4.5" fill="${b}"/><circle cx="72" cy="60" r="4" fill="${b}"/><circle cx="50" cy="35" r="6" fill="${c}"/><path d="M50 29q4-8 9-9" stroke="#3b7a2a" stroke-width="2" fill="none"/></svg>`,
+slice:(a,b,c)=>`<svg viewBox="0 0 100 100"><path d="M12 82L88 82L88 52L12 66Z" fill="${a}"/><path d="M12 72L88 60L88 66L12 78Z" fill="${b}"/><path d="M12 66L88 52L78 42L22 54Z" fill="${b}"/><circle cx="50" cy="46" r="6" fill="${c}"/></svg>`,
+cupcake:(a,b,c)=>`<svg viewBox="0 0 100 100"><path d="M26 56h48l-6 28H32z" fill="${a}"/><path d="M38 58l2 24M50 58v24M62 58l-2 24" stroke="#0002" stroke-width="2"/><ellipse cx="50" cy="52" rx="28" ry="11" fill="${b}"/><ellipse cx="50" cy="40" rx="20" ry="10" fill="${b}"/><ellipse cx="50" cy="29" rx="11" ry="8" fill="${b}"/><circle cx="50" cy="19" r="5" fill="${c}"/></svg>`,
+donut:(a,b,c)=>`<svg viewBox="0 0 100 100"><circle cx="50" cy="52" r="36" fill="${a}"/><circle cx="50" cy="50" r="31" fill="${b}"/><circle cx="50" cy="50" r="10" fill="var(--ph)"/><g fill="${c}"><rect x="30" y="34" width="8" height="3" rx="1.5" transform="rotate(30 34 35)"/><rect x="60" y="30" width="8" height="3" rx="1.5" transform="rotate(-40 64 31)"/><rect x="68" y="56" width="8" height="3" rx="1.5" transform="rotate(70 72 57)"/><rect x="40" y="68" width="8" height="3" rx="1.5" transform="rotate(-20 44 69)"/><rect x="24" y="54" width="8" height="3" rx="1.5" transform="rotate(80 28 55)"/></g></svg>`,
+croissant:(a,b)=>`<svg viewBox="0 0 100 100"><g fill="${a}" stroke="${b}" stroke-width="2"><ellipse cx="14" cy="68" rx="7" ry="12" transform="rotate(-60 14 68)"/><ellipse cx="86" cy="68" rx="7" ry="12" transform="rotate(60 86 68)"/><ellipse cx="29" cy="58" rx="11" ry="20" transform="rotate(-35 29 58)"/><ellipse cx="71" cy="58" rx="11" ry="20" transform="rotate(35 71 58)"/><ellipse cx="50" cy="52" rx="15" ry="24"/></g></svg>`,
+macaron:(a,b)=>`<svg viewBox="0 0 100 100"><ellipse cx="50" cy="42" rx="34" ry="16" fill="${a}"/><rect x="18" y="48" width="64" height="9" rx="4" fill="${b}"/><ellipse cx="50" cy="64" rx="34" ry="16" fill="${a}"/></svg>`
+};
+// name, description, price, shape, colour a/b/c, rating, review count, category, highlights
+const items=[
+["Chocolate Truffle Cake","Rich dark chocolate layers with silky ganache",650,'cake','#5a3220','#3b2418','#d6336c',4.9,238,'Cakes',["Dark chocolate","Ganache","Cocoa"]],
+["Black Forest Cake","Cherries, whipped cream and chocolate shavings",600,'cake','#4a2b1d','#fff4ea','#c9184a',4.8,312,'Cakes',["Cherries","Fresh cream","Choco shavings"]],
+["Red Velvet Cake","Velvety red sponge with cream cheese frosting",700,'cake','#c1121f','#fff1f2','#9d0208',4.9,276,'Cakes',["Cream cheese","Velvet sponge","Vanilla"]],
+["Pineapple Cake","Light vanilla sponge with juicy pineapple",550,'cake','#ffd166','#fffbe6','#f4a261',4.6,190,'Cakes',["Pineapple","Vanilla sponge","Cream"]],
+["Butterscotch Cake","Crunchy caramel praline and butterscotch cream",600,'cake','#e0a458','#fbe3b0','#b5651d',4.7,205,'Cakes',["Caramel","Praline crunch","Butterscotch"]],
+["Blueberry Cheesecake","Creamy baked cheesecake with blueberry topping",750,'cake','#f3e3c3','#5c6bc0','#3949ab',4.8,164,'Cakes',["Blueberry","Cream cheese","Biscuit base"]],
+["Plum Fruit Cake","Classic rich cake loaded with dry fruits",500,'cake','#7b4a2d','#d9b38c','#c1121f',4.5,98,'Cakes',["Dry fruits","Nuts","Warm spices"]],
+["Mango Delight Cake","Fresh mango cream and soft sponge",650,'cake','#ffb703','#fff3b0','#fb8500',4.7,143,'Cakes',["Fresh mango","Cream","Soft sponge"]],
+["Strawberry Pastry","Soft sponge, whipped cream and fresh strawberry",80,'slice','#fff1e6','#ff8fab','#d90429',4.7,121,'Pastries',["Strawberry","Whipped cream","Sponge"]],
+["Chocolate Pastry","Moist chocolate sponge with ganache",85,'slice','#6f4529','#3b2418','#c9184a',4.8,187,'Pastries',["Chocolate","Ganache","Moist sponge"]],
+["Pineapple Pastry","Fluffy sponge with pineapple cream",75,'slice','#fff3b0','#ffe066','#f4a261',4.5,96,'Pastries',["Pineapple","Cream","Fluffy"]],
+["Black Forest Pastry","Cherry and chocolate in every bite",85,'slice','#4a2b1d','#fff4ea','#c9184a',4.8,155,'Pastries',["Cherry","Chocolate","Cream"]],
+["Red Velvet Pastry","Smooth cream cheese over red velvet",95,'slice','#c1121f','#fff1f2','#9d0208',4.9,142,'Pastries',["Cream cheese","Red velvet","Vanilla"]],
+["Tiramisu Cup","Coffee-soaked layers with mascarpone cream",130,'slice','#d9b38c','#fff4ea','#5a3220',4.7,84,'Pastries',["Coffee","Mascarpone","Cocoa dust"]],
+["Vanilla Cupcake","Soft vanilla cupcake with buttercream swirl",60,'cupcake','#e5989b','#fff1f2','#d90429',4.6,134,'Treats',["Vanilla","Buttercream","Soft"]],
+["Choco Donut","Glazed ring donut with sprinkles",70,'donut','#e0a458','#6f4529','#ffd6e2',4.5,101,'Treats',["Choco glaze","Sprinkles","Fluffy"]],
+["Butter Croissant","Flaky, golden and buttery",90,'croissant','#e9a23b','#b5651d','',4.7,119,'Treats',["Butter","Flaky layers","Golden"]],
+["French Macarons","Delicate almond shells with creamy filling",120,'macaron','#ffafcc','#fff1f2','',4.8,88,'Treats',["Almond","Creamy filling","Assorted"]],
+["Chocolate Brownie","Fudgy brownie with a crackly top",80,'slice','#5a3220','#8d5a3c','#ffd166',4.9,226,'Treats',["Fudgy","Walnut","Crackly top"]],
+["Choco Lava Cake","Warm cake with a molten chocolate centre",110,'cupcake','#7b4a2d','#4a2b1d','#c9184a',4.8,173,'Treats',["Molten centre","Warm","Dark choco"]]
+];
+const SZ=[["500 g",1,"Serves 4–6"],["1 kg",1.9,"Serves 8–12"],["2 kg",3.6,"Serves 16–24"]];
+const $=id=>document.getElementById(id);
+const st=r=>`<span class="stars" style="--r:${r}">★★★★★</span>`;
+const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+document.querySelectorAll('[data-dir]').forEach(a=>a.href="https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(ADDR));
+let cat='All',cur=0,mult=1,sz='',mine={};
+try{mine=JSON.parse(localStorage.getItem('anu-r')||'{}')}catch(_){}
+$('chips').innerHTML=['All','Cakes','Pastries','Treats'].map(c=>`<button class="chip${c==='All'?' on':''}" data-c="${c}">${c}</button>`).join('');
+function render(){
+$('grid').innerHTML=items.map((it,i)=>[it,i]).filter(([it])=>cat==='All'||it[9]===cat).map(([it,i],k)=>`<button class="item" data-i="${i}" style="--d:${k*40}ms"><div class="ph">${S[it[3]](it[4],it[5],it[6])}</div><div class="info"><h3>${it[0]}</h3><div>${st(it[7])} <small>${it[7]} (${it[8]})</small></div><p>${it[1]}</p></div><span class="pr">₹ ${it[2]}</span></button>`).join('')}
+render();
+function upd(){const it=items[cur],p=Math.round(it[2]*mult/5)*5;
+$('mp').innerHTML=`₹ ${p} <small>${sz}</small>`;
+$('ord').href=wa(`Hi Anurupa Cake Shop! I’d like to order ${it[0]} (${sz}) – ₹ ${p}.`)}
+function pick(k){mult=SZ[k][1];sz=SZ[k][0]+' · '+SZ[k][2];[...$('sizes').children].forEach((c,j)=>c.classList.toggle('on',j===k));upd()}
+function rate(){$('rs').innerHTML=[1,2,3,4,5].map(n=>`<button data-n="${n}" class="${(mine[cur]||0)>=n?'on':''}" aria-label="${n} stars">★</button>`).join('')+(mine[cur]?' <small>Thanks!</small>':'')}
+function open(i){cur=i;const it=items[i];
+$('mph').innerHTML=S[it[3]](it[4],it[5],it[6]);
+$('mc').textContent=it[9];$('mt').textContent=it[0];
+$('mr').innerHTML=st(it[7])+` <small>${it[7]} · ${it[8]} reviews</small>`;
+$('md').textContent=it[1]+(it[9]==='Cakes'?'. Baked fresh to order — ask us for a custom message or design.':'. Baked fresh every day, perfect for a treat or a gift.');
+$('mchips').innerHTML=it[10].map(c=>`<span>${c}</span>`).join('');
+if(it[9]==='Cakes'){$('sizes').innerHTML=SZ.map((s,k)=>`<button class="chip" data-k="${k}">${s[0]}</button>`).join('');pick(0)}
+else{$('sizes').innerHTML='';mult=1;sz='per piece';upd()}
+rate();$('ov').hidden=false;document.body.style.overflow='hidden';$('x').focus()}
+const shut=()=>{$('ov').hidden=true;document.body.style.overflow=''};
+$('grid').onclick=e=>{const b=e.target.closest('.item');if(b)open(+b.dataset.i)};
+$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;[...$('chips').children].forEach(c=>c.classList.toggle('on',c===b));render()};
+$('sizes').onclick=e=>{const b=e.target.closest('.chip');if(b)pick(+b.dataset.k)};
+$('rs').onclick=e=>{const b=e.target.closest('button');if(!b)return;mine[cur]=+b.dataset.n;try{localStorage.setItem('anu-r',JSON.stringify(mine))}catch(_){}rate()};
+$('x').onclick=shut;$('ov').onclick=e=>{if(e.target===$('ov'))shut()};
+addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+const R=[["The red velvet was the softest cake I’ve ever had. Everyone at the party asked where it was from!","Riya S.",5],["Fresh, fairly priced and delivered right on time for my son’s birthday.","Amit D.",5],["Their croissants and macarons have become my weekend ritual.","Sneha P.",4.5]];
+$('rv').innerHTML=R.map(r=>`<div class="card">${st(r[2])}<p>${r[0]}</p><b>${r[1]}</b></div>`).join('');
+const upM=()=>$('send').href=wa(`Hi Anurupa Cake Shop! I’m ${$('fn').value||'a customer'}. ${$('fm').value}`);
+$('fn').oninput=$('fm').oninput=upM;upM();
+$('awn').innerHTML='<i></i>'.repeat(24);
+$('ha').insertAdjacentHTML('afterbegin',`<div class="stk s1">${S.cake('#fde4e9','#fff6ee','#d6456b')}</div><div class="stk s2">${S.cupcake('#f2c18d','#fffdf9','#d6456b')}</div><div class="stk s3">${S.donut('#e0a458','#fffdf9','#d6456b')}</div>`);
+</script>
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metro Restaurant | Modern Bistro & Fine Indian Dining</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#030303',
+                            dark: '#0A0A0A',
+                            card: '#121212',
+                            border: '#1F1F1F',
+                            pink: '#FF4D8D',
+                            pinkHover: '#E03B77',
+                            gold: '#E5C158',
+                            goldLight: 'rgba(229, 193, 88, 0.1)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        serif: ['"Bodoni Moda"', 'Georgia', 'serif'],
+                        price: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030303;
+            color: #E2E8F0;
+            overflow-x: hidden;
+        }
+
+        /* High touch target compliance */
+        button, a, input, select, textarea {
+            min-height: 44px;
+        }
+
+        /* Minimal scrollbar design */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030303;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF4D8D;
+        }
+
+        .menu-row {
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .menu-row:hover {
+            background-color: #0E0E0E;
+            border-color: rgba(229, 193, 88, 0.3);
+        }
+
+        .dot-leader {
+            flex-grow: 1;
+            border-bottom: 1px dotted #2A2A2A;
+            margin: 0 12px;
+            height: 1em;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-pink selection:text-white flex flex-col min-h-screen bg-brand-black text-gray-200">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-dark border-b border-brand-border py-2 px-4 text-center text-[11px] font-semibold tracking-wider text-gray-400">
+        <span class="inline-flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-white uppercase">Now Accepting Reservations</span> &bull; Connaught Place, New Delhi &bull; Valet Parking Available
+        </span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-brand-black/95 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo with exact vector icon block -->
+                <a href="#" class="flex items-center space-x-3.5 group">
+                    <div style="width:40px; height:40px; background:#fff; border-radius:8px; display:flex; align-items:center; justify-content:center;" class="shadow-md group-hover:scale-105 transition-transform">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 17V7L12 13L20 7V17H16V12L12 15L8 12V17H4Z" fill="#FF4D8D"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-bold text-2xl tracking-wider text-white uppercase leading-none">
+                            METRO
+                        </span>
+                        <span class="text-[9px] tracking-[0.3em] text-brand-gold uppercase font-semibold mt-1">Bistro &bull; Fine Dining</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-10 text-xs font-bold uppercase tracking-widest text-gray-300">
+                    <a href="#about" class="hover:text-brand-pink transition-colors">Philosophy</a>
+                    <a href="#menu" class="hover:text-brand-pink transition-colors">Carte Du Jour</a>
+                    <a href="#reviews" class="hover:text-brand-pink transition-colors">Reviews</a>
+                    <a href="#location" class="hover:text-brand-pink transition-colors">Hours &amp; Location</a>
+                    <a href="#contact" class="hover:text-brand-pink transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden lg:flex items-center space-x-5">
+                    <a href="tel:+919820011223" class="text-xs font-bold tracking-wider text-gray-300 hover:text-brand-pink transition-colors">
+                        <i class="fa-solid fa-phone mr-2 text-brand-pink"></i>+91 98200 11223
+                    </a>
+                    <button onclick="openReservationModal()" class="bg-brand-pink hover:bg-brand-pinkHover text-white px-6 py-2.5 rounded text-xs font-bold tracking-widest uppercase transition-all shadow-lg shadow-brand-pink/20">
+                        Book Table
+                    </button>
+                </div>
+
+                <!-- Mobile Drawer Toggle -->
+                <div class="flex lg:hidden items-center space-x-3">
+                    <button onclick="openReservationModal()" class="bg-brand-pink text-white px-3.5 py-1.5 rounded text-[11px] font-bold uppercase tracking-wider">
+                        Book
+                    </button>
+                    <button id="mobile-menu-btn" class="text-white p-2 focus:outline-none" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-black/80 z-50 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm lg:hidden"></div>
+    <aside id="mobile-drawer" class="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-brand-dark z-50 shadow-2xl border-l border-brand-border transform translate-x-full transition-transform duration-300 flex flex-col justify-between p-6 lg:hidden">
+        <div>
+            <div class="flex justify-between items-center pb-6 border-b border-brand-border">
+                <div class="flex items-center space-x-3">
+                    <div style="width:34px; height:34px; background:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 17V7L12 13L20 7V17H16V12L12 15L8 12V17H4Z" fill="#FF4D8D"/></svg>
+                    </div>
+                    <span class="font-serif font-bold text-xl uppercase tracking-wider text-white">METRO</span>
+                </div>
+                <button id="mobile-drawer-close" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <nav class="py-8 space-y-4 flex flex-col text-xs font-bold uppercase tracking-widest text-gray-300">
+                <a href="#about" class="mobile-drawer-link py-3 border-b border-brand-border/60">Our Philosophy</a>
+                <a href="#menu" class="mobile-drawer-link py-3 border-b border-brand-border/60">Carte Du Jour (Menu)</a>
+                <a href="#reviews" class="mobile-drawer-link py-3 border-b border-brand-border/60">Guest Feedback</a>
+                <a href="#location" class="mobile-drawer-link py-3 border-b border-brand-border/60">Timings &amp; Map</a>
+                <a href="#contact" class="mobile-drawer-link py-3">Contact Desk</a>
+            </nav>
+        </div>
+        <div class="pt-6 border-t border-brand-border space-y-3">
+            <button onclick="closeMobileDrawer(); openReservationModal();" class="w-full bg-brand-pink text-white py-3.5 rounded text-xs font-bold uppercase tracking-widest">
+                Reserve Table
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-grow">
+        
+        <!-- Hero Section: Split Editorial Layout -->
+        <section class="py-16 sm:py-24 border-b border-brand-border bg-brand-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-8">
+                        <div class="inline-flex items-center gap-2 bg-brand-card border border-brand-border px-3.5 py-1.5 rounded-full">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-emerald-400">Open Today &bull; 12:00 PM – 11:30 PM</span>
+                        </div>
+
+                        <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-light text-white leading-[1.08] tracking-tight">
+                            CRAFTED FLAVORS,<br>
+                            <span class="font-normal italic text-brand-gold">URBAN VIBES.</span>
+                        </h1>
+
+                        <p class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl font-light">
+                            Welcome to Metro Restaurant. An editorial celebration of Indian regional cooking, heritage wood-fired charcoal grilling, and contemporary global mixology in Connaught Place.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                            <button onclick="openReservationModal()" class="bg-brand-pink hover:bg-brand-pinkHover text-white px-8 py-4 rounded text-xs font-bold tracking-widest uppercase transition-colors shadow-lg shadow-brand-pink/20 text-center">
+                                Reserve Your Table
+                            </button>
+                            <a href="#menu" class="border border-brand-border hover:border-brand-gold text-white bg-brand-dark px-8 py-4 rounded text-xs font-bold tracking-widest uppercase transition-colors text-center">
+                                View Grand Menu
+                            </a>
+                        </div>
+
+                        <div class="pt-6 border-t border-brand-border/60 flex items-center space-x-8 text-xs text-gray-400">
+                            <div>
+                                <span class="block text-white font-serif text-xl font-bold">4.9 &starf;</span>
+                                <span>1,400+ Diner Reviews</span>
+                            </div>
+                            <div class="h-8 w-px bg-brand-border"></div>
+                            <div>
+                                <span class="block text-white font-serif text-xl font-bold">100%</span>
+                                <span>Authentic Recipes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Minimal Feature Card -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-brand-card p-8 rounded-xl border border-brand-border space-y-6 relative overflow-hidden">
+                            <div class="absolute -top-12 -right-12 w-40 h-40 bg-brand-gold/5 rounded-full blur-2xl pointer-events-none"></div>
+                            
+                            <div class="flex items-center justify-between border-b border-brand-border pb-4">
+                                <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Chef's Tasting Note</span>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-widest">CP &bull; New Delhi</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <h3 class="font-serif text-2xl text-white">"Flavors rooted in tradition, refined for the modern diner."</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed font-light">
+                                    Our kitchen operates with two distinct culinary brigades—ensuring complete separation between our vegetarian and non-vegetarian prep stations.
+                                </p>
+                            </div>
+
+                            <div class="pt-4 border-t border-brand-border space-y-3 text-xs">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400">Clay Charcoal Tandoor</span>
+                                    <span class="text-emerald-400 font-semibold">&check; Active</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400">Valet Concierge</span>
+                                    <span class="text-emerald-400 font-semibold">&check; Complimentary</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400">Private Dining Booths</span>
+                                    <span class="text-emerald-400 font-semibold">&check; Available</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Search & Header -->
+        <section id="menu" class="py-16 bg-brand-dark border-b border-brand-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Carte Du Jour</span>
+                        <h2 class="font-serif text-3xl sm:text-5xl text-white mt-1">The Grand Menu</h2>
+                        <p class="text-xs text-gray-400 mt-2">Prices in Indian Rupee (₹) inclusive of taxes.</p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="w-full md:w-80">
+                        <div class="relative">
+                            <input type="text" id="menu-search-input" onkeyup="filterMenu()" placeholder="Search dish name..." class="w-full px-4 py-3 pl-10 text-xs bg-brand-black border border-brand-border rounded text-white focus:outline-none focus:border-brand-gold transition-colors">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-500 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newspaper Print Dual-Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
+                    
+                    <!-- LEFT COLUMN -->
+                    <div class="space-y-12">
+                        
+                        <!-- CATEGORY 1: STARTERS & SMALL PLATES -->
+                        <div class="menu-category-block">
+                            <div class="border-b-2 border-brand-gold pb-2 mb-6 flex justify-between items-end">
+                                <h3 class="font-serif text-xl sm:text-2xl text-white uppercase tracking-wider">01. Starters &amp; Kebabs</h3>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Small Plates</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]" title="Vegetarian"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Paneer Tikka Shashlik</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹340</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Cottage cheese marinated in yellow mustard, bell peppers, charcoal smoked.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]" title="Vegetarian"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Dahi Ke Kebab</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹310</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Crispy hung curd patties infused with green chili, coriander, pomegranate.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]" title="Vegetarian"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Tandoori Malai Broccoli</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹360</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Broccoli florets steeped in cream cheese marinade, clay oven roasted.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-red-600 flex items-center justify-center p-0.5 rounded-[2px]" title="Non-Vegetarian"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Classic Chicken Tikka</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹380</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Boneless chicken marinated in red chili yogurt, char-grilled over embers.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-red-600 flex items-center justify-center p-0.5 rounded-[2px]" title="Non-Vegetarian"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Mutton Galouti Kebab</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹480</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Melt-in-mouth minced lamb patties infused with 32 Awadhi spices.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-red-600 flex items-center justify-center p-0.5 rounded-[2px]" title="Non-Vegetarian"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Amritsari Crispy Fish Tikka</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹440</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Sole fish chunks spiced with crushed carom seeds &amp; mango powder.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- CATEGORY 2: TANDOOR, BIRYANI & BREADS -->
+                        <div class="menu-category-block">
+                            <div class="border-b-2 border-brand-gold pb-2 mb-6 flex justify-between items-end">
+                                <h3 class="font-serif text-xl sm:text-2xl text-white uppercase tracking-wider">02. Biryani &amp; Breads</h3>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Clay Oven</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-red-600 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Lucknowi Dum Murgh Biryani</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹420</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Aged basmati rice layered with spiced chicken &amp; saffron milk.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Subz Hyderabadi Dum Biryani</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹350</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Garden vegetables &amp; fried onions cooked with mint &amp; long grain basmati.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Garlic Butter Naan</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹85</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Leavened bread topped with roasted garlic &amp; white butter.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Lachha Paratha</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹70</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Multi-layered crispy whole wheat bread baked in tandoor.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="space-y-12">
+                        
+                        <!-- CATEGORY 3: MAIN COURSES -->
+                        <div class="menu-category-block">
+                            <div class="border-b-2 border-brand-gold pb-2 mb-6 flex justify-between items-end">
+                                <h3 class="font-serif text-xl sm:text-2xl text-white uppercase tracking-wider">03. Main Course Curries</h3>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">House Specials</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-red-600 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Metro Signature Butter Chicken</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹460</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Charcoal chicken tikka in tomato-butter velvet gravy with kasuri methi.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Paneer Butter Masala</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹380</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Cottage cheese cubes simmered in rich cashew-tomato gravy.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Dal Makhani (24-Hour Slow Cook)</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹360</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Black lentils simmered overnight over clay coals with white butter.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-red-600 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Awadhi Mutton Rogan Josh</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹540</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Tender lamb shank stewed with Kashmiri chili extracts &amp; whole spices.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Malai Kofta Royal</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹390</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Paneer &amp; dry fruit dumplings in a saffron white gravy.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- CATEGORY 4: DESSERTS & DRINKS -->
+                        <div class="menu-category-block">
+                            <div class="border-b-2 border-brand-gold pb-2 mb-6 flex justify-between items-end">
+                                <h3 class="font-serif text-xl sm:text-2xl text-white uppercase tracking-wider">04. Desserts &amp; Cocktails</h3>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Sweet &amp; Chilled</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Gulab Jamun with Vanilla Bean</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹210</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Warm khoya dumplings served alongside gourmet vanilla ice cream.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Metro Berry Pink Cooler (Signature)</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹240</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Raspberry reduction, elderflower tonic, lime, sparkling pink soda.</p>
+                                </div>
+
+                                <div class="menu-item-row p-3 rounded menu-row border border-transparent">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center p-0.5 rounded-[2px]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></span>
+                                            <h4 class="font-serif text-base font-bold text-white item-name">Alphonso Mango Lassi</h4>
+                                        </div>
+                                        <div class="dot-leader hidden sm:block"></div>
+                                        <span class="font-price text-base font-bold text-brand-gold">₹180</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1 pl-5 font-light">Thick churned curd blended with Alphonso pulp &amp; saffron.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="mt-12 text-center pt-8 border-t border-brand-border">
+                    <button onclick="openReservationModal()" class="bg-brand-gold hover:bg-yellow-500 text-black px-8 py-3.5 rounded text-xs font-bold uppercase tracking-widest transition-colors shadow-lg shadow-brand-gold/10">
+                        Reserve Table to Taste
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ratings & Guest Feedback -->
+        <section id="reviews" class="py-16 sm:py-24 bg-brand-black border-b border-brand-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Guest Score</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-white mt-1">4.9 / 5 Star Rating</h2>
+                    </div>
+                    <div class="text-xs text-gray-400">
+                        Based on 1,400+ verified Zomato &amp; Google Reviews
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-brand-card p-6 rounded-lg border border-brand-border flex flex-col justify-between">
+                        <p class="text-xs text-gray-300 leading-relaxed font-light italic mb-6">
+                            "The Metro Signature Butter Chicken is easily the best in Connaught Place. Beautiful dark aesthetic, polite service, and crisp naan."
+                        </p>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-brand-border/60">
+                            <div class="w-8 h-8 rounded-full bg-brand-pink/20 text-brand-pink flex items-center justify-center font-bold text-xs">RV</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Rohan Verma</h4>
+                                <span class="text-[10px] text-emerald-400">&check; Verified Diner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card p-6 rounded-lg border border-brand-border flex flex-col justify-between">
+                        <p class="text-xs text-gray-300 leading-relaxed font-light italic mb-6">
+                            "Separate vegetarian kitchen setup gives complete confidence. Dahi ke kebabs melt instantly. High class ambiance without being loud."
+                        </p>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-brand-border/60">
+                            <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center font-bold text-xs">AK</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Ananya Kulkarni</h4>
+                                <span class="text-[10px] text-emerald-400">&check; Verified Diner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card p-6 rounded-lg border border-brand-border flex flex-col justify-between">
+                        <p class="text-xs text-gray-300 leading-relaxed font-light italic mb-6">
+                            "Mutton Galouti kebabs were pure perfection. Highly recommend reserving a table in advance—gets packed on weekends!"
+                        </p>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-brand-border/60">
+                            <div class="w-8 h-8 rounded-full bg-purple-900/40 text-purple-300 flex items-center justify-center font-bold text-xs">SG</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Siddharth Gujral</h4>
+                                <span class="text-[10px] text-emerald-400">&check; Verified Diner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Hours & Location Section -->
+        <section id="location" class="py-16 sm:py-24 bg-brand-dark border-b border-brand-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-5 space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Location</span>
+                            <h2 class="font-serif text-3xl sm:text-4xl text-white mt-1">Connaught Place</h2>
+                        </div>
+
+                        <div class="space-y-4 text-xs text-gray-300 leading-relaxed">
+                            <p class="flex items-start gap-3">
+                                <i class="fa-solid fa-location-dot text-brand-pink mt-1"></i>
+                                <span>Metro Restaurant, Outer Circle, Block E,<br>Connaught Place, New Delhi, Delhi 110001</span>
+                            </p>
+                            <p class="flex items-center gap-3">
+                                <i class="fa-solid fa-phone text-brand-pink"></i>
+                                <span>+91 98200 11223</span>
+                            </p>
+                        </div>
+
+                        <div class="border-t border-brand-border pt-4 space-y-2 text-xs">
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-400">Lunch Service</span>
+                                <span class="text-white font-semibold">12:00 PM – 03:30 PM</span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-400">Dinner Service</span>
+                                <span class="text-white font-semibold">07:00 PM – 11:30 PM</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex gap-3">
+                            <a href="https://maps.google.com" target="_blank" class="flex-1 bg-brand-pink hover:bg-brand-pinkHover text-white py-3 rounded text-xs font-bold uppercase tracking-wider text-center">
+                                Open Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Stylized Dark Map Interface / Google Maps Placeholder -->
+                    <div class="lg:col-span-7">
+                        <!-- 
+                            ===================================================================
+                            GOOGLE MAP EMBED INSTRUCTION:
+                            To replace this stylized placeholder with an actual Google Map iframe:
+                            Replace the contents inside this div with:
+                            <iframe src="YOUR_GOOGLE_MAPS_EMBED_URL" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            ===================================================================
+                        -->
+                        <div class="w-full h-80 sm:h-[420px] bg-[#0A0E14] rounded-xl border border-brand-border relative overflow-hidden flex flex-col justify-between shadow-2xl group">
+                            
+                            <!-- Vector Map Grid & Street Network Graphic -->
+                            <div class="absolute inset-0 opacity-40 pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="mapGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                                            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1F2937" stroke-width="1"/>
+                                        </pattern>
+                                    </defs>
+                                    <!-- Background grid -->
+                                    <rect width="100%" height="100%" fill="url(#mapGrid)" />
+                                    <!-- Diagonal Main Avenues -->
+                                    <line x1="-10%" y1="20%" x2="110%" y2="80%" stroke="#263238" stroke-width="18" />
+                                    <line x1="-10%" y1="20%" x2="110%" y2="80%" stroke="#1E293B" stroke-width="12" />
+                                    
+                                    <line x1="30%" y1="-10%" x2="70%" y2="110%" stroke="#263238" stroke-width="14" />
+                                    <line x1="30%" y1="-10%" x2="70%" y2="110%" stroke="#1E293B" stroke-width="8" />
+
+                                    <!-- Connaught Place Outer Ring Road Arc -->
+                                    <circle cx="50%" cy="50%" r="110" fill="none" stroke="#334155" stroke-width="16" />
+                                    <circle cx="50%" cy="50%" r="110" fill="none" stroke="#1E293B" stroke-width="10" />
+                                    <circle cx="50%" cy="50%" r="65" fill="#0A0E14" stroke="#FF4D8D" stroke-width="2" stroke-dasharray="4,4" />
+
+                                    <!-- Surrounding Metro Green Park Park Area -->
+                                    <path d="M 20,20 Q 80,40 120,10 T 200,80 L 160,140 Z" fill="#064E3B" opacity="0.3" />
+                                </svg>
+                            </div>
+
+                            <!-- Top Map Controls Bar -->
+                            <div class="relative z-10 p-4 flex items-center justify-between">
+                                <div class="flex items-center space-x-2 bg-brand-dark/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-brand-border text-[11px] font-bold text-gray-300 shadow-md">
+                                    <span class="w-2 h-2 rounded-full bg-brand-pink animate-ping"></span>
+                                    <span>Google Map Placeholder (Ready for Embed)</span>
+                                </div>
+                                <div class="flex space-x-1 bg-brand-dark/90 backdrop-blur-md p-1 rounded-md border border-brand-border text-xs text-gray-300">
+                                    <button class="px-2 py-1 bg-brand-black text-brand-gold font-bold rounded">Map</button>
+                                    <button class="px-2 py-1 hover:text-white transition-colors">Satellite</button>
+                                </div>
+                            </div>
+
+                            <!-- Center Interactive Marker / Metro Location -->
+                            <div class="relative z-10 my-auto flex flex-col items-center justify-center">
+                                <div class="relative flex flex-col items-center group-hover:scale-110 transition-transform duration-300">
+                                    <!-- Pulsing Pin Outer Ring -->
+                                    <div class="absolute -top-3 w-16 h-16 bg-brand-pink/20 rounded-full animate-ping pointer-events-none"></div>
+                                    
+                                    <!-- Tooltip Box -->
+                                    <div class="bg-brand-black border border-brand-pink shadow-2xl px-4 py-2 rounded-lg mb-2 flex items-center space-x-3">
+                                        <div style="width:24px; height:24px; background:#fff; border-radius:4px; display:flex; align-items:center; justify-content:center;">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 17V7L12 13L20 7V17H16V12L12 15L8 12V17H4Z" fill="#FF4D8D"/></svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-serif font-bold text-white text-xs">Metro Restaurant</h4>
+                                            <p class="text-[10px] text-brand-gold font-semibold">Block E, Outer Circle, CP</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Pin Indicator -->
+                                    <div class="w-8 h-8 bg-brand-pink text-white rounded-full flex items-center justify-center shadow-lg border-2 border-white text-sm">
+                                        <i class="fa-solid fa-utensils"></i>
+                                    </div>
+                                    <div class="w-2 h-2 bg-brand-pink rotate-45 -mt-1"></div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Map Footer Controls -->
+                            <div class="relative z-10 p-4 flex items-center justify-between bg-gradient-to-t from-brand-black via-brand-black/90 to-transparent">
+                                <div class="text-[11px] text-gray-400 font-medium">
+                                    <span class="text-white font-bold">&bull; Rajiv Chowk Metro Exit #3</span> (150m)
+                                </div>
+
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex flex-col bg-brand-dark/90 border border-brand-border rounded overflow-hidden text-gray-300">
+                                        <button class="px-2.5 py-1 hover:bg-brand-black border-b border-brand-border text-xs">+</button>
+                                        <button class="px-2.5 py-1 hover:bg-brand-black text-xs">&minus;</button>
+                                    </div>
+                                    <a href="https://maps.google.com" target="_blank" class="bg-brand-pink text-white text-xs px-3 py-2 rounded font-bold uppercase tracking-wider shadow-md hover:bg-brand-pinkHover">
+                                        Directions
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-brand-black">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-brand-dark p-8 rounded-xl border border-brand-border">
+                    <div class="text-center mb-8">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Inquiries</span>
+                        <h2 class="font-serif text-3xl text-white mt-1">Contact Metro Desk</h2>
+                    </div>
+
+                    <form onsubmit="handleContact(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" required placeholder="Your Name" class="px-4 py-3 text-xs bg-brand-black border border-brand-border rounded text-white focus:outline-none focus:border-brand-gold">
+                            <input type="email" required placeholder="Email Address" class="px-4 py-3 text-xs bg-brand-black border border-brand-border rounded text-white focus:outline-none focus:border-brand-gold">
+                        </div>
+                        <textarea rows="4" required placeholder="Your Message or Special Event Request..." class="w-full px-4 py-3 text-xs bg-brand-black border border-brand-border rounded text-white focus:outline-none focus:border-brand-gold"></textarea>
+                        <button type="submit" class="w-full bg-brand-pink hover:bg-brand-pinkHover text-white py-3.5 rounded text-xs font-bold uppercase tracking-widest">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black border-t border-brand-border py-10 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div style="width:24px; height:24px; background:#fff; border-radius:4px; display:flex; align-items:center; justify-content:center;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 17V7L12 13L20 7V17H16V12L12 15L8 12V17H4Z" fill="#FF4D8D"/></svg>
+                </div>
+                <span class="font-serif text-white uppercase tracking-wider font-bold">METRO RESTAURANT</span>
+            </div>
+            <p>&copy; 2026 Metro Restaurant. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Reservation Modal -->
+    <div id="reservationModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-brand-dark text-white rounded-xl max-w-md w-full p-6 sm:p-8 relative border border-brand-border">
+            <button onclick="closeReservationModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Table Reservation</span>
+                <h3 class="font-serif text-2xl text-white mt-1">Book Your Experience</h3>
+            </div>
+
+            <form id="resForm" onsubmit="handleReservation(event)" class="space-y-4">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Date *</label>
+                        <input type="date" required id="resDate" class="w-full px-3 py-2.5 text-xs bg-brand-black border border-brand-border rounded text-white focus:border-brand-gold">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Time *</label>
+                        <select required class="w-full px-3 py-2.5 text-xs bg-brand-black border border-brand-border rounded text-white focus:border-brand-gold">
+                            <option value="1:00 PM">1:00 PM</option>
+                            <option value="2:00 PM">2:00 PM</option>
+                            <option value="8:00 PM">8:00 PM</option>
+                            <option value="9:00 PM">9:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Guests *</label>
+                    <select required class="w-full px-3 py-2.5 text-xs bg-brand-black border border-brand-border rounded text-white focus:border-brand-gold">
+                        <option value="2">2 Guests (Table for Two)</option>
+                        <option value="4">4 Guests (Standard)</option>
+                        <option value="6">6+ Guests (Family)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Full Name *</label>
+                    <input type="text" required placeholder="Name" class="w-full px-3 py-2.5 text-xs bg-brand-black border border-brand-border rounded text-white focus:border-brand-gold">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Phone Number *</label>
+                    <input type="tel" required placeholder="+91" class="w-full px-3 py-2.5 text-xs bg-brand-black border border-brand-border rounded text-white focus:border-brand-gold">
+                </div>
+
+                <button type="submit" class="w-full bg-brand-pink hover:bg-brand-pinkHover text-white py-3.5 rounded text-xs font-bold uppercase tracking-widest mt-2">
+                    Confirm Booking
+                </button>
+            </form>
+
+            <div id="resSuccess" class="hidden text-center py-8 space-y-4">
+                <div class="w-12 h-12 bg-emerald-950 text-emerald-400 border border-emerald-700 rounded-full flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h4 class="font-serif text-xl text-white">Reservation Confirmed</h4>
+                <p class="text-xs text-gray-400">We look forward to welcoming you to Metro Restaurant.</p>
+                <button onclick="closeReservationModal()" class="bg-brand-gold text-black px-6 py-2 rounded text-xs font-bold uppercase tracking-wider">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const mobileDrawerClose = document.getElementById('mobile-drawer-close');
+        const mobileDrawerBackdrop = document.getElementById('mobile-drawer-backdrop');
+
+        function openMobileDrawer() {
+            mobileDrawerBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                mobileDrawerBackdrop.classList.remove('opacity-0');
+                mobileDrawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMobileDrawer() {
+            mobileDrawer.classList.add('translate-x-full');
+            mobileDrawerBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                mobileDrawerBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileDrawer);
+        if (mobileDrawerClose) mobileDrawerClose.addEventListener('click', closeMobileDrawer);
+        if (mobileDrawerBackdrop) mobileDrawerBackdrop.addEventListener('click', closeMobileDrawer);
+
+        document.querySelectorAll('.mobile-drawer-link').forEach(link => {
+            link.addEventListener('click', closeMobileDrawer);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('resDate');
+            if (dateInput) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+        });
+
+        function filterMenu() {
+            const query = document.getElementById('menu-search-input').value.toLowerCase();
+            const rows = document.querySelectorAll('.menu-item-row');
+
+            rows.forEach(row => {
+                const name = row.querySelector('.item-name')?.textContent.toLowerCase() || '';
+                const desc = row.querySelector('p')?.textContent.toLowerCase() || '';
+                if (name.includes(query) || desc.includes(query)) {
+                    row.style.display = 'block';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        const modal = document.getElementById('reservationModal');
+        const resForm = document.getElementById('resForm');
+        const resSuccess = document.getElementById('resSuccess');
+
+        function openReservationModal() {
+            modal.classList.remove('hidden');
+            resForm.classList.remove('hidden');
+            resSuccess.classList.add('hidden');
+        }
+
+        function closeReservationModal() {
+            modal.classList.add('hidden');
+        }
+
+        function handleReservation(e) {
+            e.preventDefault();
+            resForm.classList.add('hidden');
+            resSuccess.classList.remove('hidden');
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            alert('Thank you for contacting Metro Restaurant. We will reply shortly.');
+            e.target.reset();
+        }
+
+        window.onclick = function(e) {
+            if (e.target === modal) closeReservationModal();
+        }
+    </script>
+</body>
+</html>

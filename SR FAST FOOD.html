@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SR FAST FOOD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--surface:#f6f6f4;--ink:#1c1b1f;--muted:#5f5e63;--line:#e6e5e1;--red:#d62828;--red-ink:#fff;--sun:#ffb703;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17161a;--surface:#222126;--ink:#f3f2ef;--muted:#a9a8ad;--line:#33323a;--red:#ef4444;--red-ink:#fff}}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:800 20px "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:.2px}
+.logo span{color:var(--red)}
+nav{display:flex;gap:8px}
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--red);transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible,.tab:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.btn.solid{background:var(--red);color:var(--red-ink)}
+.btn.ghost{background:transparent;color:var(--red)}
+.btn.sm{padding:7px 16px;font-size:14px}
+.hero{padding:72px 0 64px;background:var(--surface)}
+.hero h1{font-size:clamp(44px,11vw,88px);font-weight:800;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;background:var(--sun);color:#1c1b1f;padding:0 .15em;border-radius:8px}
+.hero p{max-width:34ch;font-size:19px;color:var(--muted);margin:20px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+section{padding:64px 0}
+h2{font-size:clamp(30px,6vw,44px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--muted);margin:0 0 28px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:20px}
+.tab{flex:none;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:500 15px "DM Sans",sans-serif;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.item{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.item h3{font-size:19px;font-weight:600}
+.item p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.price{font:700 18px "DM Sans",sans-serif;white-space:nowrap;color:var(--red)}
+#contact{background:var(--surface)}
+.grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:28px}
+.grid h3{font-size:18px;margin-bottom:6px}
+.grid p{margin:0;color:var(--muted)}
+footer{padding:24px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">SR <span>FAST FOOD</span></a>
+    <nav>
+      <a class="btn ghost sm" href="#menu">Menu</a>
+      <a class="btn solid sm" href="#contact">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Hot, fresh &amp; <em>fast.</em></h1>
+      <p>Burgers, rolls, momos and more, made when you order.</p>
+      <div class="cta">
+        <a class="btn solid" href="#menu">View Menu</a>
+        <a class="btn ghost" href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <h2>Menu</h2>
+      <p class="sub">Prices in ₹. Tap a category to filter.</p>
+      <div class="tabs" id="tabs" role="group" aria-label="Menu categories"></div>
+      <div id="list"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact Us</h2>
+      <p class="sub">Call or message us to place an order.</p>
+      <div class="cta">
+        <a class="btn solid" href="tel:+910000000000">Call Now</a>
+        <a class="btn ghost" href="https://wa.me/910000000000">WhatsApp</a>
+      </div>
+      <div class="grid">
+        <div><h3>Phone</h3><p>+91 00000 00000</p></div>
+        <div><h3>Address</h3><p>Your shop address, City, State</p></div>
+        <div><h3>Opening hours</h3><p>Every day, 11 AM to 10 PM</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 SR FAST FOOD. All rights reserved.</div></footer>
+
+<script>
+const MENU=[
+["Burgers","Veg Burger","Crispy patty, lettuce, house sauce",60],
+["Burgers","Cheese Burger","Double cheese slice, onion, mayo",90],
+["Burgers","Chicken Burger","Juicy fried chicken, spicy mayo",120],
+["Rolls","Veg Roll","Fresh veggies and chutney in a soft paratha",70],
+["Rolls","Egg Roll","Double egg, onion and sauce",80],
+["Rolls","Chicken Roll","Grilled chicken, onion and green chutney",110],
+["Momos","Veg Momos (6 pcs)","Steamed, with spicy red chutney",60],
+["Momos","Chicken Momos (6 pcs)","Steamed or fried",80],
+["Momos","Paneer Momos (6 pcs)","Soft paneer filling",90],
+["Sides","French Fries","Salted and crispy",70],
+["Sides","Peri Peri Fries","Tossed in peri peri masala",90],
+["Sides","Chicken Nuggets (6 pcs)","Golden fried, with dip",100],
+["Drinks","Cold Drink","300 ml",30],
+["Drinks","Lemon Soda","Sweet or salted",40],
+["Drinks","Cold Coffee","Thick and chilled",80]
+];
+const cats=["All",...new Set(MENU.map(m=>m[0]))];
+const tabs=document.getElementById("tabs"),list=document.getElementById("list");
+function show(c){
+  [...tabs.children].forEach(b=>b.setAttribute("aria-pressed",b.textContent===c));
+  list.innerHTML=MENU.filter(m=>c==="All"||m[0]===c).map(m=>
+    `<div class="item"><div><h3>${m[1]}</h3><p>${m[2]}</p></div><div class="price">₹${m[3]}</div></div>`).join("");
+}
+cats.forEach(c=>{const b=document.createElement("button");b.className="tab";b.textContent=c;b.onclick=()=>show(c);tabs.appendChild(b)});
+show("All");
+</script>
+</body>
+</html>
